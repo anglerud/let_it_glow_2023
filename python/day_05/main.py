@@ -1,20 +1,10 @@
 from machine import Pin
 import time
 
-# Set up switch input pins
-dip5 = Pin(6, Pin.IN, Pin.PULL_DOWN)
-dip4 = Pin(5, Pin.IN, Pin.PULL_DOWN)
-dip3 = Pin(4, Pin.IN, Pin.PULL_DOWN)
-dip2 = Pin(3, Pin.IN, Pin.PULL_DOWN)
-dip1 = Pin(2, Pin.IN, Pin.PULL_DOWN)
-dip_switches = [dip1, dip2, dip3, dip4, dip5]  # right to left
-
-seg5 = Pin(13, Pin.OUT)
-seg4 = Pin(12, Pin.OUT)
-seg3 = Pin(11, Pin.OUT)
-seg2 = Pin(10, Pin.OUT)
-seg1 = Pin(9, Pin.OUT)
-segments = [seg1, seg2, seg3, seg4, seg5]  # right to left
+# Dip switches, right to left.
+dip_switches = [Pin(n, Pin.IN, Pin.PULL_DOWN) for n in [2, 3, 4, 5, 6]]
+# LED segments on segmented light component, right to left.
+segments = [Pin(n, Pin.OUT) for n in [9, 10, 11, 12, 13]]
 
 prev_value = None
 while True:
